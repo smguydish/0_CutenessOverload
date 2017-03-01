@@ -56,7 +56,7 @@ namespace CutenessOverload
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            background = Content.Load<Texture2D>("background");  // Load the background picture file into the 
+            background = Content.Load<Texture2D>("background2");  // Load the background picture file into the 
                                                                  // texture.. note that under the properties for 
                                                                  // background.jpg in the Solution explorer you 
                                                                  // should see that it has the asset name of "background"
