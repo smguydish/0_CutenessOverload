@@ -21,12 +21,15 @@ namespace CutenessOverload
 
         // Define all the variables you want to use here
 
-        Texture2D background;  // This is a Texture2D object that will hold the background picture
+        Texture2D background;
+        Texture2D background1;  // This is a Texture2D object that will hold the background picture
+        Texture2D background2;
         Texture2D superDogSheet;  // What's supdog?
         Sprite superdog;  // We will load a superdog image into this sprite and make him do awesome things!
         Sprite superdog2;
         Sprite superdog3;
         Sprite superdog4;
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -56,32 +59,38 @@ namespace CutenessOverload
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            background = Content.Load<Texture2D>("background2");  // Load the background picture file into the 
+            background1 = Content.Load<Texture2D>("background2");  // Load the background picture file into the 
                                                                  // texture.. note that under the properties for 
                                                                  // background.jpg in the Solution explorer you 
                                                                  // should see that it has the asset name of "background"
 
             superDogSheet = Content.Load<Texture2D>("superdog");
 
-            superdog = new Sprite(new Vector2(-150, 30), // Start at x=-150, y=30
+            superdog = new Sprite(new Vector2(50, 30), // Start at x=-150, y=30
                                   superDogSheet, 
                                   new Rectangle(164, 0, 163, 147), // Use this part of the superdog texture
-                                  new Vector2(60, 20));
+                                  new Vector2(0, 120));
 
-            superdog2 = new Sprite(new Vector2(-160, 40), // Start at x=-150, y=30
+            superdog2 = new Sprite(new Vector2(160, 70), // Start at x=-150, y=30
                                   superDogSheet,
                                   new Rectangle(164, 0, 163, 147), // Use this part of the superdog texture
-                                  new Vector2(68, 40));
+                                  new Vector2(0, 140));
 
-            superdog3 = new Sprite(new Vector2(-100, 42), // Start at x=-150, y=30
+            superdog3 = new Sprite(new Vector2(300, 42), // Start at x=-150, y=30
                                   superDogSheet,
                                   new Rectangle(164, 0, 163, 147), // Use this part of the superdog texture
-                                  new Vector2(87, 18));
+                                  new Vector2(0, 150));
 
-            superdog4 = new Sprite(new Vector2(-172, 87), // Start at x=-150, y=30
+            superdog4 = new Sprite(new Vector2(480, 87), // Start at x=-150, y=30
                                   superDogSheet,
                                   new Rectangle(164, 0, 163, 147), // Use this part of the superdog texture
-                                  new Vector2(68, 27));
+                                  new Vector2(0, 100));
+            
+
+            background2 = Content.Load<Texture2D>("Trump");
+
+            background = background1;
+
             // Add any other initialization code here
         }
 
@@ -105,9 +114,13 @@ namespace CutenessOverload
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
             superdog.Rotation = superdog.Rotation + 0;
-            superdog2.Rotation = superdog2.Rotation + 30;
-            superdog3.Rotation = superdog3.Rotation + 60;
+            superdog2.Rotation = superdog2.Rotation + 0;
+            superdog3.Rotation = superdog3.Rotation + 0;
             superdog4.Rotation = 0;
+
+            if (superdog.Location.Y > 350)
+                background = background2;
+
             // TODO: Add your update logic here
             superdog.Update(gameTime);  // Update the superdog so he moves
             superdog2.Update(gameTime);
